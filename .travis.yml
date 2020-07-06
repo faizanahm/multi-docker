@@ -20,5 +20,19 @@ after_success:
     - docker push afaizan/multi-nginx
     - docker push afaizan/multi-server
     - docker push afaizan/multi-worker
+
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: us-east-2
+    app: multi-docker
+    env: MultiDocker-env
+    bucker_name: elasticbeanstalk-us-east-2-179339261954
+    bucker_path: docker-multi
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY        
+
     
 
